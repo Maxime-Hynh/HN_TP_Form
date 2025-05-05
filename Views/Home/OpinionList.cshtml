@@ -1,0 +1,36 @@
+﻿<! DOCTYPE html>
+<html>
+<head>
+    <title>HN - TP LOCAL</title>
+    <link rel="stylesheet" href="~/resources/Index.css" />
+</head>
+<body>
+    <header>
+        <img src="~/resources/GroupeHN.png" class="image" alt="GroupHN" />
+        <h1>Previous Opinion</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/Home/Index/Form">Fill out form</a></li>
+            <li><a href="/Home/Index/OpinionList">Avis List</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <p>
+            <table>
+                @foreach (var opinion in ViewBag.opinionList)
+                {
+                    <tr>
+                    <td>@opinion.LastName</td>
+                    <td>@opinion.FirstName</td>
+                    <td>@opinion.OpinionGiven</td>
+                    </tr>
+                }
+
+            </table>
+        </p>
+    </section>
+</body>
+</html>

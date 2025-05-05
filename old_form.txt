@@ -1,0 +1,164 @@
+@using (Html.BeginForm("ValidationFormulaire", "Home", FormMethod.Post))
+{
+    <table>
+        <thead>Informations Personnelles</thead>
+        <tr>
+            <!--
+            <label asp-for="Nom"></label>
+            <input asp-for="Nom" />
+            <span asp-validation-for="Nom"></span>
+             <select asp-for="Sexe" asp-items="Model.SexeListeDisplay2"></select>
+            -->
+           
+            <td>@Html.LabelFor(m => m.Nom)</td>
+            <td>@Html.TextBoxFor(m => m.Nom)</td>
+            <td>@Html.ValidationMessageFor(m => m.Nom)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Prenom)</td>
+            <td>@Html.TextBoxFor(m => m.Prenom)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Sexe)</td>
+            <td>@Html.DropDownListFor(m => m.Sexe, new List<SelectListItem>{
+                new SelectListItem { Text = "Select a gender", Value = "Invalid" },
+                new SelectListItem { Text = "Homme", Value = "Homme" },
+                new SelectListItem { Text = "Femme", Value = "Femme" },
+                new SelectListItem { Text = "Autre", Value = "Autre" }
+                })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Adresse)</td>
+            <td>@Html.TextBoxFor(m => m.Adresse)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.CodePostal)</td>
+            <td>@Html.TextBoxFor(m => m.CodePostal)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Ville)</td>
+            <td>@Html.TextBoxFor(m => m.Ville)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Email)</td>
+            <td>@Html.TextBoxFor(m => m.Email)</td>
+        </tr>
+    </table>
+    <table>
+        <thead>Informations Formation suivie</thead>
+        <tr>
+            <td>@Html.LabelFor(m => m.DateDebut)</td>
+            <td><input type="date" name="DateDebut" id="DateDebut"/></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Formation)</td>
+            <td>
+                @Html.DropDownListFor(m => m.Formation, new List<SelectListItem>{
+                new SelectListItem { Text = "Select a course", Value = "Invalid" },
+                new SelectListItem { Text = "Cobol", Value = "Cobol" },
+                new SelectListItem { Text = "C#", Value = "Csharp" },
+                new SelectListItem { Text = "Dual Skills Training", Value = "Dual" },
+            })
+             
+            </td>
+        </tr>
+    </table>
+    <table>
+        <thead>Avis sur la formation</thead>
+        <tr>
+            <td>@Html.LabelFor(m => m.AvisCobol)</td>
+            <td>@Html.TextBoxFor(m => m.AvisCobol)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.AvisCsharp)</td>
+            <td>@Html.TextBoxFor(m => m.AvisCsharp)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Envoyer" />
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <table>
+     <thead>Informations Personnelles</thead>
+     <tr>
+         <td>@Html.LabelFor(m => m.Nom) : </td>
+         <td>@ViewBag.form.Nom</td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(m => m.Prenom) : </td>
+         <td>@ViewBag.form.Prenom</td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(m => m.Sexe) : </td>
+         <td>@ViewBag.form.Sexe</td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(m => m.Adresse) : </td>
+         <td>@ViewBag.form.Adresse</td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(m => m.CodePostal) : </td>
+         <td>@ViewBag.form.CodePostal</td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(m => m.Ville) : </td>
+         <td>@ViewBag.form.Ville</td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(m => m.Email) : </td>
+         <td>@ViewBag.form.Email</td>
+     </tr>
+ </table>
+ <table>
+     <thead>Informations Formation suivie</thead>
+     <tr>
+         <td>@Html.LabelFor(m => m.DateDebut) : </td>
+         <td>@ViewBag.form.DateDebut</td>
+     </tr>
+     <tr>
+         <td>@Html.LabelFor(m => m.Formation) : </td>
+         <td>@ViewBag.form.Formation</td>
+     </tr>
+ </table>
+ <table>
+     <thead>Avis sur la formation</thead>
+     @if (ViewBag.form.Formation == "Cobol")
+     {
+         <tr>
+             <td>@Html.LabelFor(m => m.AvisCobol) : </td>
+             <td>@ViewBag.form.AvisCobol</td>
+         </tr>
+     } else if (ViewBag.form.Formation == "Csharp")
+     {
+         <tr>
+             <td>@Html.LabelFor(m => m.AvisCsharp) : </td>
+             <td>@ViewBag.form.AvisCsharp</td>
+         </tr>
+     } else
+     {
+         <tr>
+             <td>@Html.LabelFor(m => m.AvisCobol) : </td>
+             <td>@ViewBag.form.AvisCobol</td>
+         </tr>
+         <tr>
+             <td>@Html.LabelFor(m => m.AvisCsharp) : </td>
+             <td>@ViewBag.form.AvisCsharp)</td>
+         </tr>
+     }
+     
+ </table>

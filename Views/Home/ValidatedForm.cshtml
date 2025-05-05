@@ -1,0 +1,54 @@
+﻿<! DOCTYPE html>
+@model TPLOCAL1.Models.Form
+@Html.ValidationSummary(false, "")
+<html>
+<head>
+    <title>HN - TP LOCAL</title>
+    <link rel="stylesheet" href="~/resources/Index.css" />
+</head>
+<body>
+    <header>
+        <img src="~/resources/GroupeHN.png" class="image" alt="GroupHN" />
+        <h1>Formulaire TP HN avis validé</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/Home/Index">Accueil</a></li>
+            <li><a href="/Home/Index/OpinionList">Avis List</a></li>
+        </ul>
+    </nav>
+
+    
+    <section>
+        <table>
+
+            @foreach (var property in typeof(TPLOCAL1.Models.Form).GetProperties())
+            {
+                @if (property.Name == "Nom") { 
+                    <tr>
+                        <td colspan="2">Informations Personnelles</td>
+                    </tr>
+                    
+                }
+                @if (property.Name == "DateDebut"){
+                    <tr>
+                        <td colspan="2">Informations sur la formation suivie</td>
+                    </tr>
+                }
+                @if (property.Name == "AvisCobol"){
+                    <tr>
+                        <td colspan="2">Avis donnés</td>
+                    </tr>
+                }
+                    <tr>
+                        <td>@property.Name : </td>
+                        <td>@property.GetValue(ViewBag.form, null)</td>
+                    </tr>
+            }
+
+        </table>
+
+    </section>
+</body>
+</html>

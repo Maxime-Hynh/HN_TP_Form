@@ -1,0 +1,114 @@
+﻿<! DOCTYPE html>
+@model TPLOCAL1.Models.Form
+<html>
+<head>
+    <title>HN - TP LOCAL</title>
+    <link rel="stylesheet" href="~/resources/Index.css" />
+</head>
+<body>
+    <header>
+        <img src="~/resources/GroupeHN.png" class="image" alt="GroupHN" />
+        <h1>Formulaire TP HN avis</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/Home/Index">Accueil</a></li>
+            <li><a href="/Home/Index/OpinionList">Avis List</a></li>
+        </ul>
+    </nav>
+
+    <section>
+
+        <form asp-action="ValidationFormulaire" method="post">
+            <table>
+                <thead>Informations Personnelles</thead>
+                <tr>
+                    <td><label asp-for="Nom"></label></td>
+                    <td><input asp-for="Nom" /></td>
+                    <td><span asp-validation-for="Nom"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Prenom"></label></td>
+                    <td><input asp-for="Prenom" /></td>
+                    <td><span asp-validation-for="Prenom"></span></td>
+                </tr>
+                <tr>
+                    
+                    <td><label asp-for="Sexe"></label></td>
+                    <td>
+                        <select asp-for="Sexe" asp-items="@(
+                            new List<SelectListItem>{
+                                new SelectListItem { Value = "Invalid", Text="Choose a gender" },
+                                new SelectListItem { Value="Homme" , Text="Homme" },
+                                new SelectListItem { Value="Femme" , Text="Femme" },
+                                new SelectListItem { Value="Autre" , Text="Autre" },
+                             })"></select>
+                    </td>
+                    <td><span asp-validation-for="Sexe"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Adresse"></label></td>
+                    <td><input asp-for="Adresse" /></td>
+                    <td><span asp-validation-for="Adresse"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CodePostal"></label></td>
+                    <td><input asp-for="CodePostal" /></td>
+                    <td><span asp-validation-for="CodePostal"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Ville"></label></td>
+                    <td><input asp-for="Ville" /></td>
+                    <td><span asp-validation-for="Ville"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Email"></label></td>
+                    <td><input asp-for="Email" /></td>
+                    <td><span asp-validation-for="Email"></span></td>
+                </tr>
+            </table>
+            <table>
+                <thead>Informations Formation suivie</thead>
+                <tr>
+                    <td><label asp-for="DateDebut"></label></td>
+                    <td><input asp-for="DateDebut" /></td>
+                    <td><span asp-validation-for="DateDebut"></span></td>
+                </tr>
+                <tr>
+
+                    <td><label asp-for="Formation"></label></td>
+                    <td>
+                        <select asp-for="Formation" asp-items="@(
+                            new List<SelectListItem>
+                            {
+                                new SelectListItem { Value = "Invalid", Text = "Choose a formation" },
+                                new SelectListItem { Value = "Cobol", Text = "Cobol" },
+                                new SelectListItem { Value = "Csharp", Text = "C#" },
+                                new SelectListItem { Value = "Dual", Text = "Dual Skills Training" },
+                            })">
+                        </select>
+                    </td>
+                    <td><span asp-validation-for="Formation"></span></td>
+                </tr>
+            </table>
+            <table>
+                <thead>Avis sur la Formation</thead>
+                <tr>
+                    <td><label asp-for="AvisCobol"></label></td>
+                    <td><input asp-for="AvisCobol" /></td>
+                    <td><span asp-validation-for="AvisCobol"></span></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="AvisCsharp"></label></td>
+                    <td><input asp-for="AvisCsharp" /></td>
+                    <td><span asp-validation-for="AvisCsharp"></span></td>
+                </tr>
+            </table>
+            <input type="submit" value="Envoyer"/>
+        </form>
+
+
+    </section>
+</body>
+</html>
