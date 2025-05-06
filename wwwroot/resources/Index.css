@@ -42,6 +42,10 @@ td:has(.field-validation-error), td:has(.field-validation-valid) {
     border-width: 0;
 }
 
+span.field-validation-error {
+    white-space: pre-line;
+}
+
 .opinionO {
     background-color: green;
 }

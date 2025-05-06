@@ -67,8 +67,13 @@ namespace TPLOCAL1.Controllers
                     ModelState.AddModelError(field.Key, "Choose a value");
                 } else if (ModelState[field.Key].Errors.Count > 0)
                 {
+                    var descriptions = "";
+                    foreach (var error in ModelState[field.Key].Errors)
+                    {
+                        descriptions += error.ErrorMessage + "\n";
+                    }
                     ModelState[field.Key].Errors.Clear();
-                    ModelState.AddModelError(field.Key, "Invalid format");
+                    ModelState.AddModelError(field.Key, descriptions);
                 }
             }
 

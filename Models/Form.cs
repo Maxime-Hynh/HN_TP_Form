@@ -19,8 +19,9 @@ namespace TPLOCAL1.Models
 
         public string Adresse { get; set; }
         [DisplayName("Code Postal")]
-        [RegularExpression(@"[0-9]{5}")]
+        [RegularExpression(@"[0-9]+")]
         [StringLength(5)]
+        [MinLength(5)]
         public string CodePostal { get; set; }
         [DisplayName("Ville")]
 
