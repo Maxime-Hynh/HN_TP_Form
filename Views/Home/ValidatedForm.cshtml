@@ -22,29 +22,73 @@
     
     <section>
         <table>
-
-            @foreach (var property in typeof(TPLOCAL1.Models.Form).GetProperties())
+            <thead>Informations Personnelles</thead>
+            <tr>
+                <td>@Html.LabelFor(m => m.Nom) : </td>
+                <td>@ViewBag.form.Nom</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Prenom) : </td>
+                <td>@ViewBag.form.Prenom</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Sexe) : </td>
+                <td>@ViewBag.form.Sexe</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Adresse) : </td>
+                <td>@ViewBag.form.Adresse</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.CodePostal) : </td>
+                <td>@ViewBag.form.CodePostal</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Ville) : </td>
+                <td>@ViewBag.form.Ville</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Email) : </td>
+                <td>@ViewBag.form.Email</td>
+            </tr>
+        </table>
+        <table>
+            <thead>Informations Formation suivie</thead>
+            <tr>
+                <td>@Html.LabelFor(m => m.DateDebut) : </td>
+                <td>@ViewBag.form.DateDebut</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Formation) : </td>
+                <td>@ViewBag.form.Formation</td>
+            </tr>
+        </table>
+        <table>
+            <thead>Avis sur la formation</thead>
+            @if (ViewBag.form.Formation == "Cobol")
             {
-                @if (property.Name == "Nom") { 
-                    <tr>
-                        <th colspan="2">Informations Personnelles</th>
-                    </tr>
-                    
-                }
-                @if (property.Name == "DateDebut"){
-                    <tr>
-                        <th colspan="2">Informations sur la formation suivie</th>
-                    </tr>
-                }
-                @if (property.Name == "AvisCobol"){
-                    <tr>
-                        <th colspan="2">Avis donnés</th>
-                    </tr>
-                }
-                    <tr>
-                        <td>@property.Name : </td>
-                        <td>@property.GetValue(ViewBag.form, null)</td>
-                    </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AvisCobol) : </td>
+                    <td>@ViewBag.form.AvisCobol</td>
+                </tr>
+            }
+            else if (ViewBag.form.Formation == "Csharp")
+            {
+                <tr>
+                    <td>@Html.LabelFor(m => m.AvisCsharp) : </td>
+                    <td>@ViewBag.form.AvisCsharp</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@Html.LabelFor(m => m.AvisCobol) : </td>
+                    <td>@ViewBag.form.AvisCobol</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AvisCsharp) : </td>
+                    <td>@ViewBag.form.AvisCsharp)</td>
+                </tr>
             }
 
         </table>
