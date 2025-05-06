@@ -20,12 +20,25 @@
     <section>
         <p>
             <table>
+                <thead>
+                    <tr>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Opinion</th>
+                    </tr>
+                </thead>
                 @foreach (var opinion in ViewBag.opinionList)
                 {
                     <tr>
-                    <td>@opinion.LastName</td>
-                    <td>@opinion.FirstName</td>
-                    <td>@opinion.OpinionGiven</td>
+                        <td>@opinion.LastName</td>
+                        <td>@opinion.FirstName</td>
+                        @if (opinion.OpinionGiven == "O") {
+                            <td class="opinionO">@opinion.OpinionGiven</td>
+                        } else
+                        {
+                            <td class="opinionN">@opinion.OpinionGiven</td>
+                        }
+
                     </tr>
                 }
 

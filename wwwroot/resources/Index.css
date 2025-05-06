@@ -38,7 +38,14 @@ table, td, tr {
     border: 1px solid;
 }
 
-    td:has(.field-validation-error), td:has(.field-validation-valid) {
-        border-width: 0;
-    }
+td:has(.field-validation-error), td:has(.field-validation-valid) {
+    border-width: 0;
+}
 
+.opinionO {
+    background-color: green;
+}
+
+.opinionN {
+    background-color: red;
+}
