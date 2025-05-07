@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TPLOCAL1.Models;
 
@@ -11,9 +13,18 @@ namespace TPLOCAL1.Controllers
 {
     public class HomeController : Controller
     {
+        public Dictionary<string, string[]> MenuData = new Dictionary<string, string[]>
+            {
+                { "", ["Accueil", "Welcome to TP HN"] },
+                { "Form", ["Formulaire", "Formulaire TP HN avis"] },
+                { "OpinionList", ["Avis list", "Previous Opinion"] }
+            };
         //methode "naturally" call by router
         public ActionResult Index(string id)
         {
+
+            ViewBag.MenuData = MenuData;
+
             if (string.IsNullOrWhiteSpace(id))
                 //retourn to the Index view (see routing in Program.cs)
                 return View();
@@ -40,12 +51,14 @@ namespace TPLOCAL1.Controllers
 
         //methode to send datas from form to validation page
         [HttpPost]
-        public ActionResult ValidationFormulaire(Models.Form form )
+        public ActionResult ValidationFormulaire(Models.Form form)
         {
             //TODO : test if model's fields are set
             //if not, display an error message and stay on the form page
             //else, call ValidationForm with the datas set by the user
-            
+
+            ViewBag.MenuData = MenuData;
+
             if (form.Formation == "Cobol")
             {
                 ModelState.Remove("AvisCsharp");
@@ -54,18 +67,20 @@ namespace TPLOCAL1.Controllers
             {
                 ModelState.Remove("AvisCobol");
             }
-            
+
             foreach (var field in ModelState)
             {
                 if (field.Value.AttemptedValue == "")
                 {
                     ModelState[field.Key].Errors.Clear();
                     ModelState.AddModelError(field.Key, "Vide");
-                } else if (field.Value.AttemptedValue == "Invalid")
+                }
+                else if (field.Value.AttemptedValue == "Invalid")
                 {
                     ModelState[field.Key].Errors.Clear();
                     ModelState.AddModelError(field.Key, "Choose a value");
-                } else if (ModelState[field.Key].Errors.Count > 0)
+                }
+                else if (ModelState[field.Key].Errors.Count > 0)
                 {
                     ModelState[field.Key].Errors.Clear();
                     ModelState.AddModelError(field.Key, "Invalid format");
