@@ -65,7 +65,7 @@ namespace TPLOCAL1.Controllers
                 {
                     ModelState[field.Key].Errors.Clear();
                     ModelState.AddModelError(field.Key, "Choose a value");
-                } else if (ModelState[field.Key].Errors.Count > 0)
+                } else if (ModelState[field.Key].Errors.Count > 1)
                 {
                     var descriptions = "";
                     foreach (var error in ModelState[field.Key].Errors)
